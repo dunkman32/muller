@@ -3,99 +3,104 @@ import styled from "styled-components"
 import defaultPic from '../../static/images/defaults/1.png'
 
 const Main = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center
+  display: flex;
+  flex-direction: column;
+  align-items: center
 `
 const OneLine = styled.div`
-    display: flex
+  display: flex
 `
 
 const Title = styled.div`
-    font-family: Montserrat;
-    font-size: 2.25rem;
-    font-weight: 800;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.22;
-    letter-spacing: normal;
-    text-align: left;
-    color: #ffffff;
+  font-family: Montserrat;
+  font-size: 2.25rem;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.22;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
 `
 
 const TitleRed = styled(Title)`
-    color: #f21f24;
-    margin-left: 10px
+  color: #f21f24;
+  margin-left: 10px
 `
 
 const Secondary = styled.div`
-    opacity: 0.23;
-    font-family: Montserrat;
-    font-size: 1.4375rem;
-    font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.22;
-    letter-spacing: normal;
-    text-align: left;
-    color: #ffffff;
-    text-transform: uppercase;
-    margin-bottom: 300px
+  opacity: 0.23;
+  font-family: Montserrat;
+  font-size: 1.4375rem;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.22;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 9.875rem;
+  @media only screen and (max-width: 601px) {
+    margin-bottom: 2rem;
+  }
 `
 
 const CardsContainer = styled.div`
-    display: flex;
-    column-gap: 2rem
-
+  display: flex;
+  column-gap: 2rem;
+  @media only screen and (max-width: 601px) {
+    flex-direction: column;
+  }
 `
 const Card = styled.div`
-    width: 250px;
-    height: 350px;
-    padding: 2.5rem;
-    border-radius: 1.25rem;
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between
+  width: 250px;
+  height: 350px;
+  padding: 2.5rem;
+  border-radius: 1.25rem;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between
 `
 
 const ReadMoreButton = styled.button`
-    width: 11.5625rem;
-    height: 3.125rem;
-    padding: 0.8125rem 3rem;
-    opacity: 0.1;
-    border-radius: 1.5625rem;
-    background-color: #8d8d8d;
-    outline: none;   
+  width: 11.5625rem;
+  height: 3.125rem;
+  padding: 0.8125rem 3rem;
+  opacity: 0.1;
+  border-radius: 1.5625rem;
+  background-color: #8d8d8d;
+  outline: none;
 `
 
 const Media = () => {
     return (
         <Main>
-            <OneLine> 
+            <OneLine>
                 <Title>PANTHOM </Title>
                 <TitleRed>FURY</TitleRed>
             </OneLine>
             <Secondary>Georgian airsoft team</Secondary>
             <CardsContainer>
                 <Card>
-                    <img src={defaultPic} alt="default" width="250" height="150" />
+                    <img src={defaultPic} alt="default" width="250" height="150"/>
                     <span>Video</span>
                     <ReadMoreButton>Read More</ReadMoreButton>
                 </Card>
                 <Card>
-                    <img src={defaultPic} alt="default" width="250" height="150" />
+                    <img src={defaultPic} alt="default" width="250" height="150"/>
                     <span>Video</span>
                     <ReadMoreButton>Read More</ReadMoreButton>
                 </Card>
                 <Card>
-                    <img src={defaultPic} alt="default" width="250" height="150" />
+                    <img src={defaultPic} alt="default" width="250" height="150"/>
                     <span>Video</span>
                     <ReadMoreButton>Read More</ReadMoreButton>
                 </Card>
                 <Card>
-                    <img src={defaultPic} alt="default" width="250" height="150" />
+                    <img src={defaultPic} alt="default" width="250" height="150"/>
                     <span>Video</span>
                     <ReadMoreButton>Read More</ReadMoreButton>
                 </Card>

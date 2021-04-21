@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 
 const Main = styled.div`
   width: calc(100% - 13.875rem);
-  padding: 1rem 6.9375rem;
+  padding: 10.8125rem 6.9375rem 0 6.9375rem;
   @media only screen and (max-width: 601px) {
     width: calc(100% - 1rem);
     padding: .5rem;
