@@ -1,14 +1,12 @@
 import React from 'react'
-import styled from "styled-components";
-
-
+import styled from "styled-components"
 
 const Main = styled.div`
     width: calc(50% + 15.5rem);
     display: flex;
     flex-direction: column;
     align-items: left;
-    margin-top: 13rem
+    padding: 21rem 6.9375rem 6.9375rem
 `
 
 const Title = styled.div`
@@ -24,16 +22,7 @@ const Title = styled.div`
     color: #fff;
 `
 
-const TitleRed = styled.div`
-    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-    font-family: FiraGO;
-    font-size: 5.75rem;
-    font-weight: 800;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.2;
-    letter-spacing: normal;
-    text-align: left;
+const TitleRed = styled(Title)`
     color: #f21f24;
     border-bottom: 1px solid #fff;
     padding: 0 1rem 0.6875rem 0

@@ -9,7 +9,6 @@ const MainDiv = styled.div`
   background-size: cover;
 `
 const Inner = styled.div`
-    padding: 6.9375rem;
     @media only screen and (max-width: 601px) {
      padding: .5rem;
    }
