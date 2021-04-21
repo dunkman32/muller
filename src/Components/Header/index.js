@@ -4,7 +4,12 @@ import logo from '../../static/images/logo/logo.png'
 import {Link} from "react-router-dom";
 
 const Main = styled.div`
-  width: 100%;
+  width: calc(100% - 13.875rem);
+  padding: 1rem 6.9375rem;
+  @media only screen and (max-width: 601px) {
+    width: calc(100% - 1rem);
+    padding: .5rem;
+  }
   position: relative;
   height: 5.9375rem;
   display: flex;
@@ -16,17 +21,27 @@ const LogoDiv = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-row-gap: 1rem;
-  grid-template-areas:  "logo logo text textt ext"
+  grid-template-areas:  "logo logo text text text";
+  @media only screen and (max-width: 601px) {
+    display: flex;
+  }
 `
 const Logo = styled.img`
   width: 4.9375rem;
   height: 5.9375rem;
+  @media only screen and (max-width: 601px) {
+    width: auto;
+    height: 2.5rem;
+  }
 `
 
 const TxtDiv = styled.div`
   display: flex;
   flex-direction: column;
   padding: 1.375rem 0;
+  @media only screen and (max-width: 601px) {
+    display: none;
+  }
 `
 
 const FirstTxt = styled.span`
@@ -60,11 +75,22 @@ const Left = styled.div`
   width: 50%;
   display: flex;
   justify-content: flex-start;
+  @media only screen and (max-width: 601px) {
+    justify-content: flex-end;
+  }
 `
 const Right = styled.div`
   width: 50%;
   display: flex;
   justify-content: flex-end;
+  @media only screen and (max-width: 601px) {
+    display: none;
+  }
+`
+const RightMobile = styled.div`
+  @media only screen and (max-width: 600px) {
+    display: block;
+  }
 `
 
 const CustomLink = styled(Link)`
@@ -150,13 +176,116 @@ const Search = styled.div`
   .search > div > input:not(:placeholder-shown) {
     width: 200px;
   }
-
 `
 
+const StyledBurger = styled.button`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+  @media only screen and (min-width: 601px) {
+    display: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  div {
+    width: 2rem;
+    height: 0.25rem;
+    background: ${({open}) => open ? '#0D0C1D' : '#EFFFFA'};
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+
+    :first-child {
+      transform: ${({open}) => open ? 'rotate(45deg)' : 'rotate(0)'};
+    }
+
+    :nth-child(2) {
+      opacity: ${({open}) => open ? '0' : '1'};
+      transform: ${({open}) => open ? 'translateX(20px)' : 'translateX(0)'};
+    }
+
+    :nth-child(3) {
+      transform: ${({open}) => open ? 'rotate(-45deg)' : 'rotate(0)'};
+    }
+  }
+`
+
+const Burger = ({open, setOpen}) => {
+    return (
+        <StyledBurger open={open} onClick={() => setOpen(!open)}>
+            <div/>
+            <div/>
+            <div/>
+        </StyledBurger>
+    )
+}
+
+const StyledMenu = styled.nav`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #EFFFFA;
+  transform: ${({open}) => open ? 'translateX(0)' : 'translateX(-100%)'};
+  height: 100vh;
+  text-align: left;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s ease-in-out;
+  @media (max-width: 600px) {
+    width: 100%;
+  }
+  a {
+    font-size: 2rem;
+    text-transform: uppercase;
+    padding: 2rem 0;
+    font-weight: bold;
+    letter-spacing: 0.5rem;
+    color: #0D0C1D;
+    text-decoration: none;
+    transition: color 0.3s linear;
+
+    @media (max-width: 600px) {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    &:hover {
+      color: #343078;
+    }
+  }
+`
+
+const Menu = ({open}) => {
+    return (
+        <StyledMenu open={open}>
+            {
+                HEADERS.map((h) => <CustomLink to={{pathname: h.to}}> {h.label} </CustomLink>)
+            }
+        </StyledMenu>
+    )
+}
 
 const Index = () => {
+    const [open, setOpen] = React.useState(false);
+    const node = React.useRef();
     return (
         <Main>
+            <RightMobile ref={node}>
+                <Menu open={open} setOpen={setOpen} />
+                <Burger open={open} setOpen={setOpen}/>
+            </RightMobile>
             <Left>
                 <LogoDiv>
                     <Logo alt='logo' src={logo} className={'logo'}/>
@@ -177,27 +306,26 @@ const Index = () => {
                 {
                     HEADERS.map((h) => <CustomLink to={{pathname: h.to}}> {h.label} </CustomLink>)
                 }
-
                 <Search className="flexbox">
                     <div className="search">
                         <div>
-                            <input type="text" placeholder="Search . . ." required />
+                            <input type="text" placeholder="Search . . ." required/>
                         </div>
                     </div>
                 </Search>
             </Right>
         </Main>
-);
+    );
 };
 
 const HEADERS = [
     {
         label: 'Home',
-            to: '#'
+        to: '#'
     },
     {
         label: 'Team',
-            to : '#'
+        to: '#'
     },
     {
         label: 'Calendar',

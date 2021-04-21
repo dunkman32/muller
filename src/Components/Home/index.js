@@ -5,7 +5,6 @@ import Header from "../Header";
 const Index = () => {
     return (
         <MasterLayout>
-            <Header/>
         </MasterLayout>
     );
 };
